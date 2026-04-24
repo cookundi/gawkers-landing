@@ -111,7 +111,7 @@ export default function GawkersHub() {
 
         {/* Mobile menu overlay */}
         {menuOpen && (
-          <div className="md:hidden fixed inset-0 top-[57px] bg-[#050505]/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8">
+          <div className="md:hidden fixed inset-0 top-[57px] backdrop-blur-2xl bg-[#050505]/70 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8">
             {navLinks.map((link) => (
               <button
                 type="button"
