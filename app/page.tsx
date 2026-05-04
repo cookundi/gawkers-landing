@@ -5,6 +5,13 @@ import { Trophy, Gamepad2, Shield, Swords, Zap, Menu, X } from 'lucide-react';
 export default function GawkersHub() {
   const [activeSection, setActiveSection] = useState('mission');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [inviteBanner, setInviteBanner] = useState('');
+
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    const inv = p.get('invite');
+    if (inv) setInviteBanner(inv.replace('@','').toLowerCase());
+  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -92,6 +99,11 @@ export default function GawkersHub() {
               style={{ fontSize: 10, letterSpacing: '0.1em' }}>
               𝕏
             </a>
+            <a href="/gawklist-application"
+              className="font-mono uppercase text-zinc-400 no-underline border border-[#A020F0]/30 px-4 py-1.5 hover:border-[#A020F0] hover:text-[#A020F0] transition-all"
+              style={{ fontSize: 10, letterSpacing: '0.1em' }}>
+              Apply WL
+            </a>
             <a href="https://gauntlet.gawkers.fun" target="_blank" rel="noopener noreferrer"
               className="font-pixel text-xs font-bold uppercase no-underline bg-[#A020F0] text-black px-5 py-2 hover:bg-white transition-all"
               style={{ letterSpacing: '0.05em' }}>
@@ -135,6 +147,12 @@ export default function GawkersHub() {
                 style={{ letterSpacing: '0.05em' }}
                 onClick={() => setMenuOpen(false)}>
                 Play Gauntlet →
+              </a>
+              <a href="/gawklist-application"
+                className="font-pixel text-sm font-bold uppercase no-underline border border-[#A020F0]/40 text-[#A020F0] px-6 py-2"
+                style={{ letterSpacing: '0.05em' }}
+                onClick={() => setMenuOpen(false)}>
+                Apply WL
               </a>
             </div>
           </div>
@@ -289,6 +307,77 @@ export default function GawkersHub() {
           </div>
         </section>
 
+        {/* ─── INVITE BANNER ─── */}
+        {inviteBanner && (
+          <div className="mb-6 px-4 py-3 border border-[#A020F0]/20 bg-[#A020F0]/[0.04] flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-[#A020F0] animate-pulse shrink-0" />
+            <p className="font-mono text-zinc-400 text-xs">
+              You were referred by <span className="text-[#A020F0]">@{inviteBanner}</span>, apply for GawkList and it counts toward their referral score.
+            </p>
+            <a href={`/gawklist-application?invite=${inviteBanner}`} className="ml-auto font-mono uppercase text-[#A020F0] no-underline border border-[#A020F0]/30 px-3 py-1 hover:bg-[#A020F0]/10 transition-all shrink-0" style={{ fontSize: 10, letterSpacing: '0.1em' }}>
+              Apply →
+            </a>
+          </div>
+        )}
+
+        {/* ─── GAWKLIST SECTION ─── */}
+        <section id="gawklist" className="mb-[80px] sm:mb-[120px] scroll-mt-[100px]">
+          <div className="flex items-center gap-3 mb-4">
+            <Shield size={20} className="text-[#A020F0]" />
+            <span className="font-mono text-[#A020F0] font-semibold uppercase" style={{ fontSize: 10, letterSpacing: '0.2em' }}>Whitelist Phase</span>
+          </div>
+          <h3 className="font-bold italic uppercase leading-none mb-4" style={{ fontSize: 'clamp(32px, 6vw, 64px)', letterSpacing: '-0.02em' }}>
+            EARN YOUR<br /><span className="text-[#A020F0]">GAWKLIST SPOT_</span>
+          </h3>
+          <p className="text-zinc-600 text-sm max-w-[540px] leading-relaxed mb-10 font-medium">
+            778 GawkList spots available for the paid mint phase. Apply to be considered, community legends, engaged supporters, and collab contributors get priority.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0.5 mb-8">
+            {[
+              { label: 'GawkList Spots', value: '778', sub: 'Paid Mint', accent: true },
+              { label: 'GawkLord Spots', value: '333', sub: 'Free Mint (Top Gamers)', accent: false },
+              { label: 'Total Supply', value: '1,111', sub: 'ETH Mainnet', accent: false },
+            ].map((s, i) => (
+              <div key={i} className="bg-white/[0.02] border border-white/[0.04] p-6 sm:p-8 text-center"
+                style={{ borderBottom: s.accent ? '2px solid #A020F0' : undefined }}>
+                <div className="font-mono text-zinc-600 uppercase mb-1" style={{ fontSize: 9, letterSpacing: '0.2em' }}>{s.label}</div>
+                <div className="font-pixel text-3xl sm:text-4xl font-bold mb-1" style={{ color: s.accent ? '#A020F0' : '#fff' }}>{s.value}</div>
+                <div className="font-mono text-zinc-700 uppercase" style={{ fontSize: 9 }}>{s.sub}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            <div className="border border-[#A020F0]/20 bg-[#A020F0]/[0.03] p-6">
+              <div className="font-mono text-[#A020F0] uppercase mb-3" style={{ fontSize: 10, letterSpacing: '0.15em' }}>How to get GawkList</div>
+              <ul className="space-y-2">
+                {['Apply below and complete all tasks', 'Refer friends, more invites = faster review', 'Win a collab giveaway', 'Get handpicked by the team'].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 font-mono text-zinc-400" style={{ fontSize: 11 }}>
+                    <span className="text-[#A020F0] mt-0.5 shrink-0">▸</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="border border-white/[0.06] bg-white/[0.02] p-6">
+              <div className="font-mono text-zinc-500 uppercase mb-3" style={{ fontSize: 10, letterSpacing: '0.15em' }}>How to get GawkLord</div>
+              <ul className="space-y-2">
+                {['Play Gauntlet at gauntlet.gawkers.fun', 'Reach the Top 300 on the leaderboard', 'Complete all 3 levels', 'No application needed, skill only'].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 font-mono text-zinc-600" style={{ fontSize: 11 }}>
+                    <span className="text-zinc-700 mt-0.5 shrink-0">▸</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <a href="/gawklist-application"
+            className="inline-flex items-center justify-center gap-2 bg-[#A020F0] text-black font-bold uppercase font-pixel no-underline hover:bg-white transition-all"
+            style={{ padding: '18px 48px', fontSize: 14, letterSpacing: '0.05em' }}>
+            Apply for GawkList →
+          </a>
+        </section>
+
         {/* ─── CTA BANNER ─── */}
         <section className="mb-[80px] sm:mb-[120px] p-8 sm:p-16 bg-gradient-to-br from-[#A020F0]/10 to-[#A020F0]/[0.02] border border-[#A020F0]/15 text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-30" style={{
@@ -328,6 +417,8 @@ export default function GawkersHub() {
               className="font-mono text-gray-300 no-underline hover:text-[#A020F0] transition-colors" style={{ fontSize: 10, letterSpacing: '0.1em' }}>Twitter/𝕏</a>
             <a href="https://gauntlet.gawkers.fun" target="_blank" rel="noopener noreferrer"
               className="font-mono text-gray-300 no-underline hover:text-[#A020F0] transition-colors" style={{ fontSize: 10, letterSpacing: '0.1em' }}>Gauntlet</a>
+            <a href="/gawklist-application"
+              className="font-mono text-gray-300 no-underline hover:text-[#A020F0] transition-colors" style={{ fontSize: 10, letterSpacing: '0.1em' }}>Apply WL</a>
           </div>
         </div>
       </footer>
