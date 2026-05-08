@@ -4,8 +4,8 @@ import { useSearchParams } from 'next/navigation';
 
 const TWITTER_HANDLE = 'gawksoneth';
 const FOLLOW_URL = `https://x.com/intent/follow?screen_name=${TWITTER_HANDLE}`;
-const QUOTE_TWEET_URL = 'https://x.com/gawksoneth'; // replace with actual tweet
-const COMMENT_TWEET_URL = 'https://x.com/gawksoneth'; // replace with actual tweet
+const QUOTE_TWEET_URL = 'https://x.com/gawksoneth/status/2052788701848043876'; // replace with actual tweet
+const COMMENT_TWEET_URL = 'https://x.com/gawksoneth/status/2052788701848043876'; // replace with actual tweet
 const SPOTS_LEFT = 778;
 const UNLOCK_DELAY = 3500; // ms after clicking X button before input unlocks
 
