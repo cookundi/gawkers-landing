@@ -225,7 +225,7 @@ function ApplyContent() {
             <div className="relative z-10 w-full max-w-xl px-5 sm:px-8 py-10 sm:py-16">
                 <div className="mb-10">
                     <div className="font-mono text-[#A020F0] uppercase mb-2" style={{ fontSize: 10, letterSpacing: '0.25em' }}>
-                        Paid Mint Phase · {SPOTS_LEFT} Spots Left
+                        Gawklist Mint Phase · {SPOTS_LEFT} NFT Spots Left
                     </div>
                     <h1 className="text-4xl sm:text-5xl font-bold italic font-pixel tracking-tighter mb-3">
                         GawkList<br /><span className="text-[#A020F0]">Application.</span>
@@ -331,9 +331,9 @@ function ApplyContent() {
                     {step === 2 && (
                         <div>
                             <div className="font-mono text-zinc-600 uppercase mb-1" style={{ fontSize: 9, letterSpacing: '0.2em' }}>Step 2 of 5</div>
-                            <h2 className="text-2xl font-bold italic font-pixel mb-1">Quote Tweet</h2>
+                            <h2 className="text-2xl font-bold italic font-pixel mb-1">Like & RT Tweet</h2>
                             <p className="font-mono text-zinc-500 text-xs leading-relaxed mb-6">
-                                Like and quote our announcement post. Include <span className="text-white">#Gawkers</span> in your quote and tag a friend. Paste your quote tweet link below.
+                                Like, RT and quote our announcement post. Include <span className="text-white">#Gawkers</span> in your quote and tag a friend. Paste your quote tweet link below.
                             </p>
                             <a href={QUOTE_TWEET_URL} target="_blank" rel="noopener noreferrer"
                                 onClick={() => handleXClick(2)}
@@ -366,7 +366,7 @@ function ApplyContent() {
                             <div className="font-mono text-zinc-600 uppercase mb-1" style={{ fontSize: 9, letterSpacing: '0.2em' }}>Step 3 of 5</div>
                             <h2 className="text-2xl font-bold italic font-pixel mb-1">Drop a Comment</h2>
                             <p className="font-mono text-zinc-500 text-xs leading-relaxed mb-6">
-                                Leave a comment on our pinned post. Say something real, our team reads every one. Paste your comment link below.
+                                Tag 2 friends in the comments, Paste your comment link below.
                             </p>
                             <a href={COMMENT_TWEET_URL} target="_blank" rel="noopener noreferrer"
                                 onClick={() => handleXClick(3)}
